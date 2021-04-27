@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Pliki zasobów">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Pliki źródłowe\CarParts">
+      <UniqueIdentifier>{e41ae5e2-3b57-449d-a7c8-8e6fb0cd423f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\CarParts">
+      <UniqueIdentifier>{d752190b-0e62-47eb-b61d-289b00f3ba74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\CarParts\CarDrives">
+      <UniqueIdentifier>{3e9e5626-6479-4ce2-9d3f-7250d62ce884}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\CarParts\CarDrives">
+      <UniqueIdentifier>{1042dd9d-3986-4267-ae1a-20927c55f351}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\CarParts\CarBody">
+      <UniqueIdentifier>{99179734-d886-40bb-ae57-f49575107ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\CarParts\CarInterior">
+      <UniqueIdentifier>{221aa63a-3600-4d9c-8cc2-e53bc4eb74f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\CarParts\CarBody">
+      <UniqueIdentifier>{4ac6619a-33b6-4f1c-87d2-59c65bbf6c86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\CarParts\CarInterior">
+      <UniqueIdentifier>{3b9e6913-e1cc-437f-a05a-49bcf1ceb6f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\CarParts\CarDrives\Parts">
+      <UniqueIdentifier>{449c46f0-44bc-4655-86b1-300f679c36fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\CarParts\CarBody\Parts">
+      <UniqueIdentifier>{65fd13ef-c97c-4a07-b7de-3f423aa69130}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\CarParts\CarInterior\Parts">
+      <UniqueIdentifier>{5df8d31c-1aa6-4366-8c06-4aa2cb2fcdbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\CarParts\CarDrives\Parts">
+      <UniqueIdentifier>{588e4fd7-725e-40a3-94bb-a409e1b67e9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\CarParts\CarBody\Parts">
+      <UniqueIdentifier>{8d8bed7b-fb85-4744-a709-d61c30103eaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\CarParts\CarInterior\Parts">
+      <UniqueIdentifier>{b122616d-f092-42ec-93c1-c8976584d705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\Other classes">
+      <UniqueIdentifier>{ea3dbed8-f23b-437a-b333-3e8eb9524763}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\OtherClasses">
+      <UniqueIdentifier>{79dc4ed8-bc73-4020-84a9-85c53de41549}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Battery.cpp">
+      <Filter>Pliki źródłowe\CarParts\CarDrives\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Pliki źródłowe\CarParts\CarDrives\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="Gearbox.cpp">
+      <Filter>Pliki źródłowe\CarParts\CarDrives\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="Bumper.cpp">
+      <Filter>Pliki źródłowe\CarParts\CarBody\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="Lamp.cpp">
+      <Filter>Pliki źródłowe\CarParts\CarBody\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="Seat.cpp">
+      <Filter>Pliki źródłowe\CarParts\CarInterior\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="MainAutomotiveShop.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="SteeringWheel.cpp">
+      <Filter>Pliki źródłowe\CarParts\CarInterior\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="Dashboard.cpp">
+      <Filter>Pliki źródłowe\CarParts\CarInterior\Parts</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoPartsDealer.cpp">
+      <Filter>Pliki źródłowe\OtherClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="FileManager.cpp">
+      <Filter>Pliki źródłowe\OtherClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintFunctions.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="LogicFunctions.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CarPart.h">
+      <Filter>Pliki nagłówkowe\CarParts</Filter>
+    </ClInclude>
+    <ClInclude Include="CarDrive.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarDrives</Filter>
+    </ClInclude>
+    <ClInclude Include="CarBody.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarBody</Filter>
+    </ClInclude>
+    <ClInclude Include="CarInterior.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarInterior</Filter>
+    </ClInclude>
+    <ClInclude Include="Bumper.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarBody\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarBody\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="Battery.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarDrives\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarDrives\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="Gearbox.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarDrives\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="Seat.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarInterior\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="SteeringWheel.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarInterior\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="Dashboard.h">
+      <Filter>Pliki nagłówkowe\CarParts\CarInterior\Parts</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoPartsDealer.h">
+      <Filter>Pliki nagłówkowe\Other classes</Filter>
+    </ClInclude>
+    <ClInclude Include="FileManager.h">
+      <Filter>Pliki nagłówkowe\Other classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintFunctions.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicFunctions.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
