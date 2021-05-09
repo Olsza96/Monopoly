@@ -6,6 +6,7 @@ const material _BUMPMATERIAL = NIEZNANY;
 const std::string _BUMPER = "BUMPER";
 
 class Bumper :public CarBody{
+private:
 	material bumpMaterial; 
 
 	std::string decrypt(material mater);

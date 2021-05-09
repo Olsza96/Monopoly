@@ -1,7 +1,15 @@
-3
+7
 seller
 331
 asa
 3312
 technik
 etc21
+sprzedajacy
+123
+root
+123
+root
+333
+seller
+444

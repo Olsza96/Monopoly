@@ -1,2 +1,13 @@
-﻿  FileManager.cpp
+﻿  Battery.cpp
+  Bumper.cpp
+  Dashboard.cpp
+  Engine.cpp
+  Gearbox.cpp
+  Lamp.cpp
+  LogicFunctions.cpp
+  MainAutomotiveShop.cpp
+  PrintFunctions.cpp
+  Seat.cpp
+  SteeringWheel.cpp
+  Generowanie kodu...
   Magazyn części samochodowych.vcxproj -> C:\Users\toshiba\Desktop\98fdbcd3-gr61-repo\Projekt\Magazyn części samochodowych\x64\Debug\AutomotiveShop.exe

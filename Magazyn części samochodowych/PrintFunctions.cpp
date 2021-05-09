@@ -24,6 +24,7 @@ void printMenuSellerChoiceOptions(){
 }
 
 void printMenuCustomerChoiceOptions(){
+	system("cls");
 	std::cout << "-------------------------------------\nMENU KUPUJACEGO\n-------------------------------------\n";
 	std::cout
 		<< "1.Wyswietl Baze\n"
@@ -48,41 +49,35 @@ void printMenuChoiceElements(std::string text) {
 		<< "0.Powrot do poprzednich opcji\n";
 }
 
-void PrintDataBase(std::list<std::shared_ptr<CarPart>> &database){
+void PrintDataBase(std::list<std::shared_ptr<CarPart>> database){
+	std::list<std::shared_ptr<CarPart>> copyBase = database;
 
 	if (!database.empty()) {
 		while (true) {
 			system("cls");
 
-			for (auto it : database) {
+			for (auto it : copyBase) {
 				it->print();
 			}
 
-			std::cout << "\nSortuj:\n"
-				<< "[1] Alfabetycznie\n"
-				<< "[2] Wedlug ceny\n"
-				<< "[3] Wedlug kategorii\n"
+			std::cout << "\n[1] Sortuj wyniki\n"
+				<< "[2] Filtruj wyniki\n"
 				<< "[0] Powrot\n";
 
-			int switcher;
+			int switcher = -1;
 			readParam(switcher);
 
-			switch (switcher) {
+			switch (switcher){
 			case 1:
-				database.sort(compareName);
-				PrintDataBase(database);
-				return;
+				printOptionsSort(copyBase);
+				break;
 			case 2:
-				database.sort(compareCost);
-				PrintDataBase(database);
-				return;
-			case 3:
-				database.sort(compareCategory);
-				PrintDataBase(database);
-				return;
+				printOptionsFiltres(database, copyBase);
+				break;
 			default:
 				return;
 			}
+
 		}
 	}
 	else {
@@ -92,11 +87,39 @@ void PrintDataBase(std::list<std::shared_ptr<CarPart>> &database){
 	}
 }
 
+void printOptionsSort(std::list<std::shared_ptr<CarPart>> &database){
+
+	std::cout << "Sortuj:\n"
+		<< "[1] Alfabetycznie\n"
+		<< "[2] Wedlug ceny\n"
+		<< "[3] Wedlug kategorii\n"
+		<< "[0] Powrot\n";
+
+	int switcher = -1;
+	readParam(switcher);
+
+	switch (switcher) {
+	case 1:
+		database.sort(compareName);
+		return;
+	case 2:
+		database.sort(compareCost);
+		return;
+	case 3:
+		database.sort(compareCategory);
+		return;
+	default:
+		return;
+	}
+}
+
 void ClearDataBase(std::list<std::shared_ptr<CarPart>>& database){
 	system("cls");
 
 	database.clear();
 	std::cout << "Wyczyszczono zawartosc bazy\n";
+	system("pause");
+	system("cls");
 }
 
 void EnterDataFromFile(FileManager manage, std::list<std::shared_ptr<CarPart>>& database){

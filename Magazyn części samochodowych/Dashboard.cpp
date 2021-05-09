@@ -27,24 +27,25 @@ void Dashboard::set(std::string name, double cost, std::string material, bool is
 
 std::shared_ptr<std::string[]> Dashboard::fillText() {
 	std::shared_ptr<std::string[]> text(new std::string[2]);
-	std::cout << "Podaj nazwe, a nastepnie rodzaj materialu: \n";
-	std::cin.clear();
-	std::cin >> text[0] >> text[1];
+	std::cout << "\nnazwe: ";
+	readParam(text[0]);
+	
+	std::cout << "\nrodzaj materialu: ";
+	readParam(text[1]);
 
 	return text;
 }
 
 void Dashboard::fill(){
+	std::cout << "Wypelnij - ";
 	std::shared_ptr<std::string[]> text = fillText();
 
 	double cost;
-	std::cout << "Podaj cene: \n";
-	std::cin.clear();
+	std::cout << "\ncene: ";
 	readParam(cost);
 	
 	char c;
 	std::cout << "Czy zawiera sie poduszka powietrzna?[T/N]\n";
-	std::cin.clear();
 	readParam(c, "Podano za wiele znakow, sprobuj ponownie\n");
 
 	bool isairbag;

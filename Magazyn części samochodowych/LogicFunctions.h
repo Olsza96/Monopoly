@@ -12,7 +12,9 @@ void AddElement(std::list<std::shared_ptr<CarPart>> &database);
 std::shared_ptr<CarPart> FindElement(std::list<std::shared_ptr<CarPart>>& database);
 void SearchElement(std::list<std::shared_ptr<CarPart>>& database);
 void CreateSummaryFile(std::list<std::shared_ptr<CarPart>>& database, FileManager manage);
+void printOptionsFiltres(std::list<std::shared_ptr<CarPart>> DATABASE, std::list<std::shared_ptr<CarPart>>& database);
 
+std::string toUpperString(std::string str);
 bool compareName(const std::shared_ptr<CarPart>& D1, const std::shared_ptr<CarPart>& D2);
 bool compareCost(const std::shared_ptr<CarPart>& D1, const std::shared_ptr<CarPart>& D2);
 bool compareCategory(const std::shared_ptr<CarPart>& D1, const std::shared_ptr<CarPart>& D2);
@@ -27,4 +29,7 @@ template<class T> void readParam(T& param, std::string errorText = "Podano bledn
 		std::cin.ignore(std::numeric_limits < std::streamsize >::max(), '\n');
 		std::cout << errorText;
 	}
+
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits < std::streamsize >::max(), '\n');
 }

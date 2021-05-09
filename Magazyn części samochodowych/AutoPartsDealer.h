@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 class AutoPartsDealer{
 	std::string nick;

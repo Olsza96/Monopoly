@@ -27,23 +27,26 @@ void SteeringWheel::set(std::string name, double cost, std::string material, int
 
 std::shared_ptr<std::string[]> SteeringWheel::fillText() {
 	std::shared_ptr<std::string[]> text(new std::string[2]);
-	std::cout << "Podaj nazwe, a nastepnie rodzaj materialu: \n";
-	std::cin.clear();
-	std::cin >> text[0] >> text[1];
+
+	std::cout << "\nnazwe: ";
+	readParam(text[0]);
+	
+	std::cout << "\nrodzaj materialu: ";
+	readParam(text[1]);
 
 	return text;
 }
 
 void SteeringWheel::fill(){
+	std::cout << "Wypelnij - ";
 	std::shared_ptr<std::string[]> text = fillText();
+	
 	double cost;
-	std::cout << "Podaj cene: \n";
-	std::cin.clear();
+	std::cout << "\ncene: ";
 	readParam(cost);
 
 	unsigned int brachial;
-	std::cout << "Podaj liczbe ramion: \n";
-	std::cin.clear();
+	std::cout << "\nliczba ramion: ";
 	readParam(brachial);
 
 	set(text[0], cost, text[1], (int)brachial);

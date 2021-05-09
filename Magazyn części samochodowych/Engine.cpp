@@ -27,19 +27,19 @@ void Engine::set(std::string name, double cost, int serviceperiod, int power){
 
 void Engine::fill(){
 	std::string name;
-	std::cout << "Podaj nazwe: \n";
-	std::cin.clear();
-	std::cin >> name;
+	std::cout << "Wypelnij - ";
+	std::cout << "\nnazwe: ";
+	readParam(name);
 
 	double cost;
-	std::cout << "Podaj cene: \n";
-	std::cin.clear();
+	std::cout << "\ncene: ";
 	readParam(cost);
 
 	int periodAndHorsePower[2];
-	std::cout << "Podaj okres serwisowania, a nastepnie moc silnika[KM]: \n";
-	std::cin.clear();
+	std::cout << "\nokres serwisowania: ";
 	readParam(periodAndHorsePower[0]);
+	
+	std::cout << "\nmoc silnika[KM]: ";
 	readParam(periodAndHorsePower[1]);
 
 	set(name, cost, periodAndHorsePower[0], periodAndHorsePower[1]);

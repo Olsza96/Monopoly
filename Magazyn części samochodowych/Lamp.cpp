@@ -27,26 +27,29 @@ void Lamp::set(std::string name, double cost, std::string color, int power){
 
 std::shared_ptr<std::string[]> Lamp::fillText() {
 	std::shared_ptr<std::string[]> text(new std::string[2]);
-	std::cout << "Podaj nazwe, a nastepnie kolor: \n";
-	std::cin.clear();
-	std::cin >> text[0] >> text[1];
+
+	std::cout << "\nnazwe: ";
+	readParam(text[0]);
+
+	std::cout << "\nkolor: ";
+	readParam(text[1]);
 
 	return text;
 }
 
 double Lamp::fillCost() {
 	double cost;
-	std::cout << "Podaj cene: \n";
-	std::cin.clear();
+	std::cout << "cene: ";
 	readParam(cost);
 
 	return cost;
 }
 void Lamp::fill(){
+	std::cout << "Wypelnij - ";
 	std::shared_ptr<std::string[]> text = fillText();
 	double cost = fillCost();
 	int power;
-	std::cout << "Podaj moc: \n";
+	std::cout << "\nmoc: ";
 	readParam(power);
 
 	set(text[0], cost, text[1], power);

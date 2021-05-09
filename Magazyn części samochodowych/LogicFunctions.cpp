@@ -48,12 +48,21 @@ bool LogInToSeller(){
 	readParam(password);
 
 	std::shared_ptr<AutoPartsDealer> user = std::make_shared<AutoPartsDealer>(nick, password);
+	
 
-	for (auto it : Users) {
+	for (std::list<std::shared_ptr<AutoPartsDealer>>::iterator it = Users.begin(); it != Users.end(); ++it) {
 		
-		if(it->getNick() == user->getNick()) {
+		if(it->get()->getNick() == user->getNick()) {
 
-			if (it->getPassword() == user->getPassword()) {
+			while (it->get()->getPassword() != user->getPassword()) {
+				++it;
+
+				if (it->get() == nullptr) {
+					return false;
+				}
+			}
+
+			if (it->get()->getPassword() == user->getPassword()) {
 				return true;
 			}
 			else {
@@ -91,6 +100,7 @@ void MenuSeller(std::list<std::shared_ptr<CarPart>>& database) {
 	int switcher = 0;
 
 	FileManager manageFiles;
+
 	std::fstream File(_DATABASENAME, std::ios::in);
 	manageFiles.loadDataBase(database, File);
 
@@ -120,6 +130,7 @@ void MenuSeller(std::list<std::shared_ptr<CarPart>>& database) {
 			break;
 		case 0:
 			manageFiles.saveDataBase(database);
+			database.clear();
 			return;
 		default:
 			std::cout << "Brak takiego wyboru, sprobuj ponownie\n";
@@ -133,6 +144,7 @@ void MenuCustomer(std::list<std::shared_ptr<CarPart>>& database){
 	int switcher = 0;
 
 	FileManager manageFiles;
+
 	std::fstream File(_DATABASENAME, std::ios::in);
 	manageFiles.loadDataBase(database, File);
 	std::list<std::shared_ptr<CarPart>> purchases;
@@ -157,6 +169,7 @@ void MenuCustomer(std::list<std::shared_ptr<CarPart>>& database){
 			break;
 		case 0:
 			manageFiles.saveDataBase(database);
+			database.clear();
 			return;
 		default:
 			std::cout << "Brak takiego wyboru, sprobuj ponownie\n";
@@ -198,6 +211,108 @@ void PickElement(std::list<std::shared_ptr<CarPart>>& database, std::list<std::s
 		break;
 	}
 
+}
+
+void printOptionsFiltres(std::list<std::shared_ptr<CarPart>> DATABASE, std::list<std::shared_ptr<CarPart>>& database) {
+	database.clear();
+
+	std::cout << "Filtruj:\n"
+		<< "[1] Kategorie\n"
+		<< "[2] Cene\n"
+		<< "[0] Powrot\n";
+	
+	int switcher = -1;
+	int min, max;
+	readParam(switcher);
+
+	switch (switcher){
+	case 1:
+		printMenuChoiceElements("Wybierz kategorie, ktorej szukasz\n");
+		readParam(switcher);
+
+		for (auto it : DATABASE) {
+
+			if (it->getCategory() == _BUMPER && switcher == 1) {
+				database.push_back(it);
+			}
+			else if (it->getCategory() == _LAMP && switcher == 2) {
+				database.push_back(it);
+			}
+			else if (it->getCategory() == _BATTERY && switcher == 3) {
+				database.push_back(it);
+			}
+			else if (it->getCategory() == _ENGINE && switcher == 4) {
+				database.push_back(it);
+			}
+			else if (it->getCategory() == _GEARBOX && switcher == 5) {
+				database.push_back(it);
+			}
+			else if (it->getCategory() == _DASHBOARD && switcher == 6) {
+				database.push_back(it);
+			}
+			else if (it->getCategory() == _SEAT && switcher == 7) {
+				database.push_back(it);
+			}
+			else if (it->getCategory() == _STEERINGWHEEL && switcher == 8) {
+				database.push_back(it);
+			}
+			else if (switcher == 0) {
+				break;
+			}
+		}
+
+		break;
+	case 2:
+		std::cout << "Podaj zakres cen\n"
+			<< "[1] minimalna wartosc\n"
+			<< "[2] maksymalna wartosc\n"
+			<< "[12] MinMax\n";
+		readParam(switcher);
+
+		if (switcher == 1) {
+			std::cout << "\nMin = ";
+			readParam(min);
+			
+			for (auto it : DATABASE) {
+
+				if (it->getCost() >= min) {
+					database.push_back(it);
+				}
+
+			}
+		}
+		else if (switcher == 2) {
+			std::cout << "\nMax = ";
+			readParam(max);
+
+			for (auto it : DATABASE) {
+
+				if (it->getCost() <= max) {
+					database.push_back(it);
+				}
+
+			}
+		}
+		else if (switcher == 12) {
+			std::cout << "\nMin = ";
+			readParam(min);
+
+			std::cout << "\nMax = ";
+			readParam(max);
+
+			for (auto it : DATABASE) {
+
+				if (it->getCost() >= min && it->getCost() <= max) {
+					database.push_back(it);
+				}
+
+			}
+		}
+
+		break;
+	default:
+		return;
+	}
 }
 
 void CreateShoppingList(std::list<std::shared_ptr<CarPart>> purchases, FileManager manage){
@@ -371,6 +486,7 @@ void SearchElement(std::list<std::shared_ptr<CarPart>>& database){
 	}
 	else {
 		std::cout << "Brak takiego produktu\n";
+		system("pause");
 		return;
 	}
 
@@ -442,14 +558,44 @@ void CreateSummaryFile(std::list<std::shared_ptr<CarPart>>& database, FileManage
 	file.close();
 }
 
-bool compareName(const std::shared_ptr<CarPart>& D1, const std::shared_ptr<CarPart>& D2) {
+std::string toUpperString(std::string str){
+	int i = 0;
+	char* cstr = new char[str.length() + 1];
 
-	if (D1->getName() == D2->getName()) {
+	while (str.c_str()[i]) {
+		cstr[i] = str.c_str()[i];
+		i++;
+	}
+
+	cstr[str.length()] = 0;
+
+	char c;
+	std::string reStr = "";
+	i = 0;
+	while (cstr[i]){
+		c = cstr[i];
+		reStr += (toupper(c));
+		i++;
+	}
+
+	delete[] cstr;
+
+	return reStr;
+}
+
+bool compareName(const std::shared_ptr<CarPart>& D1, const std::shared_ptr<CarPart>& D2){
+
+	std::string str1 = toUpperString(D1->getName());
+	std::string str2 = toUpperString(D2->getName());
+
+	if (str1 == str2) {
 		return D1 < D2;
 	}
 
-	return D1->getName() < D2->getName();
+	return str1 < str2;
 }
+
+
 
 bool compareCost(const std::shared_ptr<CarPart>& D1, const std::shared_ptr<CarPart>& D2) {
 
@@ -461,12 +607,14 @@ bool compareCost(const std::shared_ptr<CarPart>& D1, const std::shared_ptr<CarPa
 }
 
 bool compareCategory(const std::shared_ptr<CarPart>& D1, const std::shared_ptr<CarPart>& D2){
+	std::string str1 = toUpperString(D1->getCategory());
+	std::string str2 = toUpperString(D2->getCategory());
 
-	if (D1->getCategory() == D2->getCategory()) {
+	if (str1 == str2) {
 		return D1 < D2;
 	}
 
-	return D1->getCategory() < D2->getCategory();
+	return str1 < str2;
 }
 
 std::string getNameOfCarPart(int i){

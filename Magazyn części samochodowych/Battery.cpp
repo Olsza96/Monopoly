@@ -27,19 +27,20 @@ void Battery::set(std::string name, double cost, int serviceperiod, int capacity
 
 void Battery::fill(){
 	std::string name;
-	std::cout << "Podaj nazwe: \n";
-	std::cin.clear();
-	std::cin >> name;
+	std::cout << "Wypelnij - ";
+
+	std::cout << "\nnazwe: ";
+	readParam(name);
 
 	double cost;
-	std::cout << "Podaj cene: \n";
-	std::cin.clear();
+	std::cout << "\ncene: ";
 	readParam(cost);
 
 	int periodAndcapacity[2];
-	std::cout << "Podaj okres serwisowania, a nastepnie pojemnosc akumulatora: \n";
-	std::cin.clear();
+	std::cout << "\nokres serwisowania: ";
 	readParam(periodAndcapacity[0]);
+
+	std::cout << "\npojemnosc akumulatora: ";
 	readParam(periodAndcapacity[1]);
 
 	set(name, cost, periodAndcapacity[0], periodAndcapacity[1]);

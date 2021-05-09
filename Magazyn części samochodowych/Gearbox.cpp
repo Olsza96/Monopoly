@@ -27,11 +27,10 @@ void Gearbox::set(std::string name, double cost, int serviceperiod, Kind type){
 
 int Gearbox::fillIterator() {
 	int iterator;
-	std::cout << "Wybierz material: \n["
+	std::cout << "\nWybierz material: \n["
 		<< Kind::manual << ".Manual]\n["
 		<< Kind::automatic << ".Automatic]\n["
 		<< Kind::sequential << ".Sequential]\n";
-	std::cin.clear();
 	readParam(iterator);
 
 	return iterator;
@@ -39,18 +38,17 @@ int Gearbox::fillIterator() {
 
 void Gearbox::fill(){
 	std::string name;
-	std::cout << "Podaj nazwe: \n";
-	std::cin.clear();
-	std::cin >> name;
+	std::cout << "Wypelnij - ";
+
+	std::cout << "\nnazwe: ";
+	readParam(name);
 
 	double cost;
-	std::cout << "Podaj cene: \n";
-	std::cin.clear();
+	std::cout << "\ncene: ";
 	readParam(cost);
 
 	int period;
-	std::cout << "Podaj okres serwisowania: \n";
-	std::cin.clear();
+	std::cout << "\nokres serwisowania: ";
 	readParam(period);
 
 	int iterator = fillIterator();

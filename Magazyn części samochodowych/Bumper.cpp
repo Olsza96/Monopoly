@@ -27,17 +27,19 @@ void Bumper::set(std::string name, double cost, std::string color, material bump
 
 std::shared_ptr<std::string[]> Bumper::fillText() {
 	std::shared_ptr<std::string[]> text(new std::string[2]);
-	std::cout << "Podaj nazwe, a nastepnie kolor: \n";
-	std::cin.clear();
-	std::cin >> text[0] >> text[1];
+	
+	std::cout << "\nnazwe: ";
+	readParam(text[0]);
+
+	std::cout << "\nkolor: ";
+	readParam(text[1]);
 
 	return text;
 }
 
 double Bumper::fillCost() {
 	double cost;
-	std::cout << "Podaj cene: \n";
-	std::cin.clear();
+	std::cout << "\ncene: ";
 	readParam(cost);
 
 	return cost;
@@ -45,17 +47,17 @@ double Bumper::fillCost() {
 
 int Bumper::fillIterator() {
 	int iterator;
-	std::cout << "Wybierz material: \n["
+	std::cout << "\nWybierz material: \n["
 		<< material::ABS << ".ABS]\n["
 		<< material::EPDM << ".EPDM]\n["
 		<< material::EP << ".EP]\n";
-	std::cin.clear();
 	readParam(iterator);
 
 	return iterator;
 }
 
 void Bumper::fill(){
+	std::cout << "Wypelnij - ";
 	std::shared_ptr<std::string[]> text = fillText();
 	double cost = fillCost();
 	int iterator = fillIterator();
